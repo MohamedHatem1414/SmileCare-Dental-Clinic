@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" id="html-tag">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileCare Dental Clinic | Premium Oral Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        tealAccent: {
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                        },
+                        darkBg: {
+                            900: '#090d16',
+                            800: '#0f172a',
+                            700: '#1e293b',
+                            600: '#334155',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        arabic: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html[lang="ar"] { font-family: 'Cairo', sans-serif; }
+        html[lang="ar"] .font-serif { font-family: 'Cairo', sans-serif; font-weight: 700; }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        @keyframes heroEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .hero-enter {
+            opacity: 0;
+            animation: heroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .hero-badge { animation-delay: 0.05s; }
+        .hero-title { animation-delay: 0.12s; }
+        .hero-copy { animation-delay: 0.18s; }
+        .hero-actions { animation-delay: 0.24s; }
+        .hero-visual { animation-delay: 0.3s; animation-name: heroEnter, floatCard; animation-duration: 0.9s, 4.5s; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out; animation-iteration-count: 1, infinite; animation-fill-mode: forwards, both; }
+
+        .credit-badge {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 40;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+        .credit-badge.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .credit-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.14);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 11px;
+            line-height: 1.2;
+            color: #0f172a;
+        }
+        .dark .credit-pill {
+            background: rgba(15, 23, 42, 0.88);
+            border-color: rgba(148, 163, 184, 0.18);
+            color: #e2e8f0;
+            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+        }
+        .credit-pill a {
+            color: #0284c7;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .dark .credit-pill a {
+            color: #2dd4bf;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-darkBg-900 text-slate-800 dark:text-slate-200 font-sans antialiased overflow-x-hidden transition-colors duration-300">
+
+    <div id="scrollProgress" class="fixed top-0 left-0 w-0 h-1 bg-gradient-to-r from-brand-500 via-tealAccent-500 to-brand-600 z-[100] transition-all duration-75 shadow-[0_2px_10px_rgba(2,132,199,0.3)]"></div>
+
+    <div id="credit-badge" class="credit-badge" aria-label="Designed and engineered by Mohamed Hatem">
+        <div class="credit-pill">
+            <span>Designed & Engineered by</span>
+            <a href="https://mohamed-hatem-web.vercel.app/" rel="noopener noreferrer">Mohamed Hatem</a>
+        </div>
+    </div>
+
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-darkBg-900/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/40 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="p-2 bg-brand-500/10 dark:bg-brand-500/20 rounded-lg group-hover:scale-110 transition-transform">
+                    <i data-lucide="activity" class="w-6 h-6 text-brand-500 dark:text-tealAccent-400"></i>
+                </div>
+                <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Smile<span class="text-brand-500">Care</span></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-6 lg:gap-8 font-medium text-sm tracking-wide text-slate-600 dark:text-slate-300">
+                <a href="#about" data-i18n="nav-about" class="hover:text-brand-500 transition-colors">About</a>
+                <a href="#services" data-i18n="nav-services" class="hover:text-brand-500 transition-colors">Services</a>
+                <a href="#doctors" data-i18n="nav-doctors" class="hover:text-brand-500 transition-colors">Specialists</a>
+                <a href="#results" data-i18n="nav-results" class="hover:text-brand-500 transition-colors">Cases</a>
+                <a href="#faq" data-i18n="nav-faq" class="hover:text-brand-500 transition-colors">FAQ</a>
+                <a href="#contact" data-i18n="nav-contact" class="hover:text-brand-500 transition-colors">Contact</a>
+                
+                <div class="flex items-center gap-2 border-l dark:border-slate-800 border-slate-200 pl-4 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition-colors" aria-label="Toggle structural dark theme">
+                        <i data-lucide="moon" id="theme-icon" class="w-4 h-4"></i>
+                    </button>
+                    <button id="lang-toggle" class="text-xs font-bold border border-slate-300 dark:border-slate-700 px-2.5 py-1.5 rounded-md hover:bg-brand-500 hover:text-white dark:hover:text-slate-900 transition-all">
+                        AR
+                    </button>
+                </div>
+
+                <a href="#appointment" data-i18n="nav-book" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2.5 font-semibold text-xs tracking-wider transition-all rounded-lg shadow-sm">BOOK APPOINTMENT</a>
+            </nav>
+
+            <div class="flex items-center gap-2 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-lg text-slate-600 dark:text-slate-400">
+                    <i data-lucide="moon" id="theme-icon-mobile" class="w-4 h-4"></i>
+                </button>
+                <button id="lang-toggle-mobile" class="text-xs font-bold border border-slate-300 dark:border-slate-700 px-2 py-1 rounded">
+                    AR
+                </button>
+                <button class="p-2 text-slate-900 dark:text-white focus:outline-none" id="mobile-menu-btn" aria-label="Toggle contextual parameters navigation menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="hidden bg-white dark:bg-darkBg-800 border-b border-slate-200 dark:border-slate-800 px-6 pt-2 pb-8 absolute w-full left-0 shadow-xl transition-all" id="mobile-menu">
+            <div class="flex flex-col gap-4 tracking-wide font-medium text-slate-800 dark:text-slate-200">
+                <a href="#about" data-i18n="nav-about" class="mobile-link py-2 border-b border-slate-100 dark:border-slate-700/50 hover:text-brand-500">About</a>
+                <a href="#services" data-i18n="nav-services" class="mobile-link py-2 border-b border-slate-100 dark:border-slate-700/50 hover:text-brand-500">Services</a>
+                <a href="#doctors" data-i18n="nav-doctors" class="mobile-link py-2 border-b border-slate-100 dark:border-slate-700/50 hover:text-brand-500">Specialists</a>
+                <a href="#results" data-i18n="nav-results" class="mobile-link py-2 border-b border-slate-100 dark:border-slate-700/50 hover:text-brand-500">Cases</a>
+                <a href="#faq" data-i18n="nav-faq" class="mobile-link py-2 border-b border-slate-100 dark:border-slate-700/50 hover:text-brand-500">FAQ</a>
+                <a href="#contact" data-i18n="nav-contact" class="mobile-link py-2 hover:text-brand-500">Contact</a>
+                <a href="#appointment" data-i18n="nav-book" class="mobile-link bg-brand-500 text-white text-center py-3 font-bold rounded-lg shadow-md mt-2">BOOK APPOINTMENT</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen flex items-center bg-gradient-to-br from-brand-50 via-white to-sky-100/50 dark:from-darkBg-900 dark:via-darkBg-900 dark:to-slate-900/60 pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-40 dark:opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-1/10 w-96 h-96 bg-brand-500 rounded-full filter blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/10 w-96 h-96 bg-tealAccent-500 rounded-full filter blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 text-center lg:text-left rtl:lg:text-right space-y-6">
+                    <div class="hero-enter hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-tealAccent-400 font-semibold text-xs tracking-wider uppercase mx-auto lg:mx-0">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                        <span data-i18n="hero-tag">Elite Dental Care Excellence</span>
+                    </div>
+                    <h1 id="hero-headline" class="hero-enter hero-title font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tight leading-[1.15]">
+                        Your Smile Deserves <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-tealAccent-500">The Best Care</span>
+                    </h1>
+                    <p data-i18n="hero-desc" class="hero-enter hero-copy text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 text-base sm:text-lg font-light leading-relaxed">
+                        Experience advanced medical infrastructure combined with elite clinical mastery. We craft pristine aesthetics and radiant health through localized specialized workflows.
+                    </p>
+                    <div class="hero-enter hero-actions flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#appointment" data-i18n="hero-btn-book" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-white text-center px-8 py-4 font-semibold text-sm rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 transition-all transform hover:-translate-y-0.5">Book Appointment</a>
+                        <a href="#services" data-i18n="hero-btn-services" class="w-full sm:w-auto bg-white/80 dark:bg-darkBg-800/80 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 text-center px-8 py-4 font-semibold text-sm rounded-xl shadow-sm transition-all backdrop-blur-sm">Our Services</a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute inset-0 border border-brand-500/20 rounded-2xl translate-x-4 translate-y-4 z-0 pointer-events-none"></div>
+                    <div class="hero-enter hero-visual relative z-10 rounded-2xl overflow-hidden shadow-2xl bg-white dark:bg-darkBg-800 p-3 border border-slate-200/60 dark:border-slate-700/50 backdrop-blur-sm">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" alt="Smiling modern operational dentist staff practitioner" class="w-full h-[320px] sm:h-[420px] object-cover rounded-xl filter brightness-95 dark:brightness-90">
+                        <div class="absolute bottom-8 left-8 right-8 glass border border-white/20 dark:border-slate-700/50 p-4 rounded-xl flex items-center gap-3 shadow-lg">
+                            <div class="p-2.5 bg-tealAccent-500 rounded-lg text-white">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p data-i18n="hero-glass-text" class="text-xs text-slate-500 dark:text-slate-400">Digital Digitalized Digital Oral Scan</p>
+                                <p data-i18n="hero-glass-title" class="text-sm font-bold text-slate-900 dark:text-white">100% Diagnostic Accuracy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white dark:bg-darkBg-800 border-y border-slate-100 dark:border-slate-800/50 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div class="text-center space-y-1">
+                    <div class="text-3xl sm:text-4xl font-bold tracking-tight text-brand-500 dark:text-tealAccent-400 font-serif"><span class="counter" data-target="10">0</span>+</div>
+                    <p data-i18n="stat-exp" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Years Experience</p>
+                </div>
+                <div class="text-center space-y-1">
+                    <div class="text-3xl sm:text-4xl font-bold tracking-tight text-brand-500 dark:text-tealAccent-400 font-serif"><span class="counter" data-target="5000">0</span>+</div>
+                    <p data-i18n="stat-patients" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Happy Patients</p>
+                </div>
+                <div class="text-center space-y-1">
+                    <div class="text-3xl sm:text-4xl font-bold tracking-tight text-brand-500 dark:text-tealAccent-400 font-serif"><span class="counter" data-target="20">0</span>+</div>
+                    <p data-i18n="stat-docs" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Dental Specialists</p>
+                </div>
+                <div class="text-center space-y-1">
+                    <div class="text-3xl sm:text-4xl font-bold tracking-tight text-brand-500 dark:text-tealAccent-400 font-serif" data-i18n="stat-em-val">24/7</div>
+                    <p data-i18n="stat-emergency" class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Emergency Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-slate-50 dark:bg-darkBg-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-5 relative order-last lg:order-first reveal">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=80" alt="Advanced Clinical Operations Room Layout" class="w-full h-64 object-cover rounded-xl shadow-md transform translate-y-8">
+                        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=400&q=80" alt="Dentist Consulting Patient Safely" class="w-full h-64 object-cover rounded-xl shadow-md">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-500/5 dark:bg-brand-500/10 rounded-full filter blur-xl -z-10"></div>
+                </div>
+                
+                <div class="lg:col-span-7 space-y-6 reveal">
+                    <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase border-b-2 border-brand-500/20 pb-1" data-i18n="about-tag">ABOUT CLINIC</div>
+                    <h2 data-i18n="about-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">Elevating Standards of Absolute Oral Health System Delivery</h2>
+                    <p data-i18n="about-p1" class="text-slate-600 dark:text-slate-400 font-light leading-relaxed">
+                        SmileCare Clinic operates at the frontier of international micro-dentistry paradigms. Established with an uncompromising structural dedication to therapeutic refinement, our clinic unifies non-invasive precision parameters with an artistic vision of facial structure balance.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="flex gap-3">
+                            <div class="shrink-0 p-2 h-10 w-10 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-lg flex items-center justify-center">
+                                <i data-lucide="target" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="about-m-title" class="font-bold text-slate-900 dark:text-white text-sm tracking-wide">Our Mission</h3>
+                                <p data-i18n="about-m-desc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">To implement frictionless high-fidelity diagnostic therapeutic procedures engineered exclusively to protect user longevity matrix frameworks.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="shrink-0 p-2 h-10 w-10 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-lg flex items-center justify-center">
+                                <i data-lucide="heart" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="about-v-title" class="font-bold text-slate-900 dark:text-white text-sm tracking-wide">Our Values</h3>
+                                <p data-i18n="about-v-desc" class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">Absolute surgical transparency, continuous academic validation integration, and compassionate patient interface parameters.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-white dark:bg-darkBg-800 border-y border-slate-100 dark:border-slate-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-20 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="services-tag">CLINICAL DISCIPLINES</div>
+                <h2 data-i18n="services-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Elite Dental Specializations</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="sun" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv1-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Teeth Whitening</h3>
+                    <p data-i18n="srv1-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">Laser-activated enamel whitening workflows resulting in up to eight multi-shade modifications without baseline structural degradation.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv2-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Dental Implants</h3>
+                    <p data-i18n="srv2-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">High-fidelity bio-compatible structural titanium implant placement interfaces utilizing navigated computing matrix workflows.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv3-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Orthodontics</h3>
+                    <p data-i18n="srv3-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">Advanced structural occlusion balancing mechanisms leveraging premium crystal translucent modern alignments.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="git-merge" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv4-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Root Canal Treatment</h3>
+                    <p data-i18n="srv4-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">Microscopic endodontic internal channel stereotactic cleansing and structural structural high-seal polymerization.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv5-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Cosmetic Dentistry</h3>
+                    <p data-i18n="srv5-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">Custom localized smile design protocols involving hyper-thin premium laminate ceramic veneers.</p>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/50 p-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/30 group hover:border-brand-500/30 dark:hover:border-brand-500/30 transition-all transform hover:-translate-y-1 reveal">
+                    <div class="w-12 h-12 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
+                        <i data-lucide="phone-call" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="srv6-name" class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-3">Emergency Care</h3>
+                    <p data-i18n="srv6-desc" class="text-slate-600 dark:text-slate-400 text-sm font-light leading-relaxed">Immediate clinical parameters allocation for acute dentoalveolar trauma management protocols execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50 dark:bg-darkBg-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-20 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="why-tag">ADVANTAGES Matrix</div>
+                <h2 data-i18n="why-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Why SmileCare Leads Nationally</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 bg-white dark:bg-darkBg-800 border border-slate-200/60 dark:border-slate-700/50 rounded-2xl text-center shadow-sm hover:shadow-md transition-all reveal">
+                    <div class="inline-block p-3.5 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-2xl mb-4">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="why1-title" class="font-bold text-slate-900 dark:text-white text-base tracking-wide mb-2">Advanced Technology</h3>
+                    <p data-i18n="why1-desc" class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed font-light">3D intraoral digital scanners, precision dental operating microscopes, and localized AI radiograph screening engines.</p>
+                </div>
+                <div class="p-8 bg-white dark:bg-darkBg-800 border border-slate-200/60 dark:border-slate-700/50 rounded-2xl text-center shadow-sm hover:shadow-md transition-all reveal">
+                    <div class="inline-block p-3.5 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-2xl mb-4">
+                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="why2-title" class="font-bold text-slate-900 dark:text-white text-base tracking-wide mb-2">Experienced Doctors</h3>
+                    <p data-i18n="why2-desc" class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed font-light">Board-certified clinical masters maintaining continuous ongoing tenure across premier global research bodies.</p>
+                </div>
+                <div class="p-8 bg-white dark:bg-darkBg-800 border border-slate-200/60 dark:border-slate-700/50 rounded-2xl text-center shadow-sm hover:shadow-md transition-all reveal">
+                    <div class="inline-block p-3.5 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-2xl mb-4">
+                        <i data-lucide="smile" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="why3-title" class="font-bold text-slate-900 dark:text-white text-base tracking-wide mb-2">Comfortable Environment</h3>
+                    <p data-i18n="why3-desc" class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed font-light">Premium acoustic isolation chambers paired with stress-attenuation medical ergonomic support structures.</p>
+                </div>
+                <div class="p-8 bg-white dark:bg-darkBg-800 border border-slate-200/60 dark:border-slate-700/50 rounded-2xl text-center shadow-sm hover:shadow-md transition-all reveal">
+                    <div class="inline-block p-3.5 bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 dark:text-tealAccent-400 rounded-2xl mb-4">
+                        <i data-lucide="credit-card" class="w-6 h-6"></i>
+                    </div>
+                    <h3 data-i18n="why4-title" class="font-bold text-slate-900 dark:text-white text-base tracking-wide mb-2">Affordable Care</h3>
+                    <p data-i18n="why4-desc" class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed font-light">Absolute transactional transparency featuring flexible fractional internal financing matrices configuration structures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="doctors" class="py-24 bg-white dark:bg-darkBg-800 border-y border-slate-100 dark:border-slate-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-20 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="docs-tag">MEDICAL REGISTRY</div>
+                <h2 data-i18n="docs-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Our Elite Medical Faculty</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-700/30 shadow-sm hover:shadow-md transition-all group reveal">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dr. Sarah Jenkins - Executive Chief Medical Director" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 justify-center">
+                            <span class="text-white text-xs font-semibold tracking-wider bg-brand-500/95 px-3 py-1.5 rounded-md">HARVARD MEDICAL ALUMNI</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-1.5">
+                        <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white">Dr. Sarah Jenkins</h3>
+                        <p data-i18n="doc1-spec" class="text-xs font-medium text-brand-500 dark:text-tealAccent-400">Chief Implantologist</p>
+                        <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                            <span data-i18n="doc-exp-label">EXPERIENCE</span>
+                            <span>14+ Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-700/30 shadow-sm hover:shadow-md transition-all group reveal">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="Dr. Marcus Vance - Clinical Micro-Surgical Specialist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 justify-center">
+                            <span class="text-white text-xs font-semibold tracking-wider bg-brand-500/95 px-3 py-1.5 rounded-md">LONDON DENTAL INSTITUTE</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-1.5">
+                        <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white">Dr. Marcus Vance</h3>
+                        <p data-i18n="doc2-spec" class="text-xs font-medium text-brand-500 dark:text-tealAccent-400">Orthodontic Specialist</p>
+                        <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                            <span data-i18n="doc-exp-label">EXPERIENCE</span>
+                            <span>11+ Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-700/30 shadow-sm hover:shadow-md transition-all group reveal">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dr. Amira Fahmy - Aesthetic Reconstructive Master" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 justify-center">
+                            <span class="text-white text-xs font-semibold tracking-wider bg-brand-500/95 px-3 py-1.5 rounded-md">BERLIN CLINICAL FELLOW</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-1.5">
+                        <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white">Dr. Amira Fahmy</h3>
+                        <p data-i18n="doc3-spec" class="text-xs font-medium text-brand-500 dark:text-tealAccent-400">Cosmetic Reconstructive Dentist</p>
+                        <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                            <span data-i18n="doc-exp-label">EXPERIENCE</span>
+                            <span>9+ Years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 rounded-2xl overflow-hidden border border-slate-200/50 dark:border-slate-700/30 shadow-sm hover:shadow-md transition-all group reveal">
+                    <div class="h-72 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80" alt="Dr. Jonathan Reed - Senior Endodontic Microsurgery Architect" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 justify-center">
+                            <span class="text-white text-xs font-semibold tracking-wider bg-brand-500/95 px-3 py-1.5 rounded-md">UPENN MICRO-ENDODONTICS</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-1.5">
+                        <h3 class="font-serif text-lg font-bold text-slate-900 dark:text-white">Dr. Jonathan Reed</h3>
+                        <p data-i18n="doc4-spec" class="text-xs font-medium text-brand-500 dark:text-tealAccent-400">Endodontic Surgeon</p>
+                        <div class="pt-3 border-t border-slate-200 dark:border-slate-700 flex justify-between text-[11px] text-slate-500 dark:text-slate-400 font-medium">
+                            <span data-i18n="doc-exp-label">EXPERIENCE</span>
+                            <span>12+ Years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="results" class="py-24 bg-slate-50 dark:bg-darkBg-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-20 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="results-tag">CLINICAL VERIFICATION</div>
+                <h2 data-i18n="results-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Transformational Case Showcase</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <div class="bg-white dark:bg-darkBg-800 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/50 shadow-sm reveal space-y-4">
+                    <div class="grid grid-cols-2 gap-3 relative">
+                        <div class="relative rounded-xl overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=400&q=80" alt="Clinical Malocclusion Baseline State State Data" class="w-full h-48 sm:h-56 object-cover">
+                            <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white font-mono text-[10px] tracking-widest px-2 py-1 rounded uppercase" data-i18n="case-before">BEFORE</div>
+                        </div>
+                        <div class="relative rounded-xl overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=400&q=80" alt="Post Therapeutic Structural Alignment Realization State" class="w-full h-48 sm:h-56 object-cover">
+                            <div class="absolute top-3 left-3 bg-brand-500/90 backdrop-blur-sm text-white font-mono text-[10px] tracking-widest px-2 py-1 rounded uppercase" data-i18n="case-after">AFTER</div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 data-i18n="case1-title" class="font-serif text-base font-bold text-slate-900 dark:text-white">Full Arch Aesthetic Smile Reconstruction</h3>
+                        <p data-i18n="case1-desc" class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed font-light">Resolution of deep structural biometric spaces using custom customized micro E-Max ultra porcelain veneers infrastructure.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-darkBg-800 p-4 rounded-2xl border border-slate-200/60 dark:border-slate-700/50 shadow-sm reveal space-y-4">
+                    <div class="grid grid-cols-2 gap-3 relative">
+                        <div class="relative rounded-xl overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=400&q=80" alt="Missing Premolar Maxillary Segment Segment Structure" class="w-full h-48 sm:h-56 object-cover">
+                            <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white font-mono text-[10px] tracking-widest px-2 py-1 rounded uppercase" data-i18n="case-before">BEFORE</div>
+                        </div>
+                        <div class="relative rounded-xl overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=400&q=80" alt="Successful Structural Guided Implant Implantation Implementation" class="w-full h-48 sm:h-56 object-cover">
+                            <div class="absolute top-3 left-3 bg-brand-500/90 backdrop-blur-sm text-white font-mono text-[10px] tracking-widest px-2 py-1 rounded uppercase" data-i18n="case-after">AFTER</div>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 data-i18n="case2-title" class="font-serif text-base font-bold text-slate-900 dark:text-white">Guided Digital Implant Osteotomy</h3>
+                        <p data-i18n="case2-desc" class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed font-light">Extraction mitigation combined with instantaneous 3D titanium implant restoration processing pipelines parameters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white dark:bg-darkBg-800 border-y border-slate-100 dark:border-slate-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-20 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="testi-tag">PATIENT REFLECTIONS</div>
+                <h2 data-i18n="testi-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Testimonials of Excellence</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 p-8 rounded-2xl border border-slate-200/60 dark:border-slate-700/30 flex flex-col justify-between shadow-sm reveal">
+                    <div class="space-y-4">
+                        <div class="flex gap-1 text-tealAccent-500 dark:text-tealAccent-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p data-i18n="testi1-text" class="text-slate-600 dark:text-slate-400 text-sm italic font-light leading-relaxed">
+                            "The surgical precision execution metrics deployed during my biological implant sequence operation was simply outstanding. No systemic structural post-op distress anomalies observed."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-slate-700 mt-6">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Clara Vance Patient Profile Picture" class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500/20">
+                        <div>
+                            <p class="text-slate-900 dark:text-white font-bold text-sm">Clara Vance</p>
+                            <p data-i18n="testi1-job" class="text-[11px] text-slate-400">Corporate Director</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 p-8 rounded-2xl border border-slate-200/60 dark:border-slate-700/30 flex flex-col justify-between shadow-sm reveal">
+                    <div class="space-y-4">
+                        <div class="flex gap-1 text-tealAccent-500 dark:text-tealAccent-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p data-i18n="testi2-text" class="text-slate-600 dark:text-slate-400 text-sm italic font-light leading-relaxed">
+                            "Absolute micro-aesthetic orchestration. My custom E-Max restorative porcelain laminate veneers parameters completely adapted to match physical jaw structural vectors perfectly."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-slate-700 mt-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Dr. Raymond Finch Patient Profile Reviewer" class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500/20">
+                        <div>
+                            <p class="text-slate-900 dark:text-white font-bold text-sm">Dr. Raymond Finch</p>
+                            <p data-i18n="testi2-job" class="text-[11px] text-slate-400">Academic Professor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-darkBg-700/40 p-8 rounded-2xl border border-slate-200/60 dark:border-slate-700/30 flex flex-col justify-between shadow-sm reveal">
+                    <div class="space-y-4">
+                        <div class="flex gap-1 text-tealAccent-500 dark:text-tealAccent-400">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p data-i18n="testi3-text" class="text-slate-600 dark:text-slate-400 text-sm italic font-light leading-relaxed">
+                            "The localized emergency operational response capability structure is elite. They processed treated my dynamic dental structural crack trauma with zero disruption delays."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-6 border-t border-slate-200 dark:border-slate-700 mt-6">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="Erick Sterling Patient System Review User" class="w-10 h-10 rounded-full object-cover ring-2 ring-brand-500/20">
+                        <div>
+                            <p class="text-slate-900 dark:text-white font-bold text-sm">Erick Sterling</p>
+                            <p data-i18n="testi3-job" class="text-[11px] text-slate-400">Software Architect</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="appointment" class="py-24 bg-slate-50 dark:bg-darkBg-900 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="reserve-tag">RESERVATIONS SCHEDULER</div>
+                <h2 data-i18n="reserve-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Initiate Consultation Protocol</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <form class="bg-white dark:bg-darkBg-800 p-8 sm:p-12 border border-slate-200/60 dark:border-slate-700/50 rounded-3xl shadow-xl space-y-6 text-left rtl:text-right reveal" id="appointmentForm" onsubmit="event.preventDefault(); alert('Consultation Request Transmitted Safely.');">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label data-i18n="form-name" class="block text-xs font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">Full Name</label>
+                        <input type="text" required class="w-full bg-slate-50 dark:bg-darkBg-900 border border-slate-200 dark:border-slate-700 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl text-slate-900 dark:text-white transition-all">
+                    </div>
+                    <div>
+                        <label data-i18n="form-phone" class="block text-xs font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">Phone Number</label>
+                        <input type="tel" required class="w-full bg-slate-50 dark:bg-darkBg-900 border border-slate-200 dark:border-slate-700 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl text-slate-900 dark:text-white transition-all">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label data-i18n="form-email" class="block text-xs font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">Email Address</label>
+                        <input type="email" required class="w-full bg-slate-50 dark:bg-darkBg-900 border border-slate-200 dark:border-slate-700 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl text-slate-900 dark:text-white transition-all">
+                    </div>
+                    <div>
+                        <label data-i18n="form-date" class="block text-xs font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">Preferred Date</label>
+                        <input type="date" required class="w-full bg-slate-50 dark:bg-darkBg-900 border border-slate-200 dark:border-slate-700 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl text-slate-900 dark:text-white transition-all">
+                    </div>
+                </div>
+                <div>
+                    <label data-i18n="form-msg" class="block text-xs font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400 mb-2">Clinical Symptoms Notes / Clinical Intent</label>
+                    <textarea rows="4" class="w-full bg-slate-50 dark:bg-darkBg-900 border border-slate-200 dark:border-slate-700 px-4 py-3.5 text-sm focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 rounded-xl text-slate-900 dark:text-white transition-all"></textarea>
+                </div>
+                <div class="pt-2">
+                    <button type="submit" data-i18n="form-btn" class="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white py-4 font-bold tracking-wider text-xs rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">REQUEST CLINICAL ALLOCATION</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24 bg-white dark:bg-darkBg-800 border-y border-slate-100 dark:border-slate-800/40 transition-colors duration-300">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-16 reveal">
+                <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="faq-tag">KNOWLEDGE BASE</div>
+                <h2 data-i18n="faq-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Frequently Asked Clinical Questions</h2>
+                <div class="w-12 h-1 bg-gradient-to-r from-brand-500 to-tealAccent-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <div class="border border-slate-200 dark:border-slate-700/60 rounded-xl bg-slate-50 dark:bg-darkBg-700/30 overflow-hidden transition-all">
+                    <button class="w-full px-6 py-5 text-left rtl:text-right flex justify-between items-center font-bold text-slate-900 dark:text-white text-sm sm:text-base focus:outline-none faq-btn">
+                        <span data-i18n="faq1-q">What parameters define dental implant longevity indices?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300 transform shrink-0 ml-2 rtl:ml-0 rtl:mr-2"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-darkBg-800">
+                        <p data-i18n="faq1-a" class="p-6 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed border-t border-slate-200 dark:border-slate-700">
+                            Dental implant longevity depends on successful osseointegration with underlying bone matrix grids, patient compliance with mechanical micro-hygiene maintenance protocols, and structural titanium micro-purity deployment criteria during surgical delivery.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-700/60 rounded-xl bg-slate-50 dark:bg-darkBg-700/30 overflow-hidden transition-all">
+                    <button class="w-full px-6 py-5 text-left rtl:text-right flex justify-between items-center font-bold text-slate-900 dark:text-white text-sm sm:text-base focus:outline-none faq-btn">
+                        <span data-i18n="faq2-q">Does laser whitening weaken natural enamel structural matrices?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300 transform shrink-0 ml-2 rtl:ml-0 rtl:mr-2"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-darkBg-800">
+                        <p data-i18n="faq2-a" class="p-6 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed border-t border-slate-200 dark:border-slate-700">
+                            No. Our advanced therapeutic activation wavelengths oxidize deep extrinsic color matrices selectively within biological porosity intervals without causing modification or calcification breakdown within localized crystalline configurations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border border-slate-200 dark:border-slate-700/60 rounded-xl bg-slate-50 dark:bg-darkBg-700/30 overflow-hidden transition-all">
+                    <button class="w-full px-6 py-5 text-left rtl:text-right flex justify-between items-center font-bold text-slate-900 dark:text-white text-sm sm:text-base focus:outline-none faq-btn">
+                        <span data-i18n="faq3-q">What protocol regulates post-trauma emergency response processing?</span>
+                        <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-300 transform shrink-0 ml-2 rtl:ml-0 rtl:mr-2"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-white dark:bg-darkBg-800">
+                        <p data-i18n="faq3-a" class="p-6 text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-light leading-relaxed border-t border-slate-200 dark:border-slate-700">
+                            Acute traumatic injuries undergo instant diagnostic sorting validation upon transmission. Triage mechanics prioritize vascular control and nerve salvage operations, bypassing conventional waiting structures to preserve vital structures.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-slate-50 dark:bg-darkBg-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <div class="lg:col-span-5 space-y-8 flex flex-col justify-center reveal">
+                    <div>
+                        <div class="inline-block text-xs font-bold text-brand-500 dark:text-tealAccent-400 tracking-widest uppercase mb-2" data-i18n="contact-tag">CONNECT CHANNELS</div>
+                        <h2 data-i18n="contact-title" class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">We Are Open To Serve</h2>
+                    </div>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white dark:bg-darkBg-800 text-brand-500 dark:text-tealAccent-400 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="c-add-t" class="font-bold text-slate-900 dark:text-white">Physical Location Address</h3>
+                                <p data-i18n="contact-address" class="text-slate-500 dark:text-slate-400 text-xs mt-1 leading-relaxed">422 Medical Tower, Clinical Plaza District, Manhattan, NY 10021</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white dark:bg-darkBg-800 text-brand-500 dark:text-tealAccent-400 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="c-ph-t" class="font-bold text-slate-900 dark:text-white">Surgical Inquiries Hub</h3>
+                                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1 direction-ltr text-left rtl:text-right">+1 (555) 382-9020</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white dark:bg-darkBg-800 text-brand-500 dark:text-tealAccent-400 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 data-i18n="c-em-t" class="font-bold text-slate-900 dark:text-white">Electronic Secure Mailing Intake</h3>
+                                <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">clinical.intake@smilecaredental.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 h-[350px] lg:h-auto min-h-[380px] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700/60 shadow-lg relative reveal">
+                    <div class="absolute inset-0 bg-slate-200 dark:bg-slate-800 flex flex-col items-center justify-center p-8 text-center space-y-4">
+                        <div class="p-4 bg-white/80 dark:bg-darkBg-900/80 backdrop-blur-md rounded-2xl shadow-md border border-slate-100 dark:border-slate-700/40 inline-flex items-center justify-center">
+                            <i data-lucide="map" class="w-8 h-8 text-brand-500 animate-bounce"></i>
+                        </div>
+                        <div>
+                            <h4 data-i18n="map-placeholder-title" class="font-serif font-bold text-slate-900 dark:text-white text-base">Interactive Medical Positioning Space Enabled</h4>
+                            <p data-i18n="map-placeholder-desc" class="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1 leading-relaxed">Structural satellite mapping coordinates display system dynamically muted for baseline production compliance testing verification.</p>
+                        </div>
+                        <div class="text-[10px] font-mono tracking-wider bg-slate-900 text-slate-400 dark:bg-black px-3 py-1 rounded">LAT: 40.7644° N | LNG: -73.9620° W</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-100 dark:bg-darkBg-800 border-t border-slate-200 dark:border-slate-800/60 pt-16 pb-12 text-xs text-slate-500 dark:text-slate-400 tracking-wide font-medium transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <div class="space-y-4 reveal">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="activity" class="w-5 h-5 text-brand-500"></i>
+                    <span class="font-serif text-lg font-bold text-slate-900 dark:text-white tracking-tight">Smile<span class="text-brand-500">Care</span></span>
+                </div>
+                <p data-i18n="footer-desc" class="leading-relaxed text-slate-500 dark:text-slate-400 font-light text-xs max-w-sm">
+                    Operating advanced diagnostics clinical micro-surgical care loops optimized for premium aesthetic longevity parameters validation across contemporary global communities ecosystems.
+                </p>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <h3 data-i18n="f-hours-t" class="font-serif text-slate-900 dark:text-white font-bold text-sm tracking-wide uppercase">Operational Care Windows</h3>
+                <ul class="space-y-2 font-light">
+                    <li class="flex justify-between border-b border-slate-200 dark:border-slate-700/40 pb-1.5">
+                        <span data-i18n="h-wd">Monday - Friday</span>
+                        <span class="font-medium text-slate-800 dark:text-slate-300">08:00 - 21:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-slate-200 dark:border-slate-700/40 pb-1.5">
+                        <span data-i18n="h-we">Saturday</span>
+                        <span class="font-medium text-slate-800 dark:text-slate-300">09:00 - 17:00</span>
+                    </li>
+                    <li class="text-brand-500 dark:text-tealAccent-400 font-medium text-[11px]" data-i18n="h-note">24/7 Acute Dental Emergency Intake Streams Available</li>
+                </ul>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <h3 data-i18n="f-legal-t" class="font-serif text-slate-900 dark:text-white font-bold text-sm tracking-wide uppercase">Clinical Verification</h3>
+                <p data-i18n="f-legal-d" class="leading-relaxed text-slate-400 font-light text-[11px]">
+                    All surgical operations execution streams strictly comply with the direct operational directives defined by the National Healthcare Standards Validation Board Matrix protocols.
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-slate-700/60 pt-8 flex flex-col md:flex-row items-center justify-between text-slate-400 font-medium">
+            <p id="copyright-text">&copy; 2026 SMILECARE CLINIC. ALL RIGHTS RESERVED WORLDWIDE.</p>
+            <p class="mt-4 md:mt-0 font-medium tracking-wide text-[11px] sm:text-xs">
+                <span id="dev-title">Designed & Engineered by:</span>
+                <a href="https://mohamed-hatem-web.vercel.app/" target="_blank" rel="noopener noreferrer" class="text-brand-500 hover:text-brand-600 dark:text-tealAccent-400 dark:hover:text-tealAccent-500 underline underline-offset-4 transition-colors font-bold">
+                    Mohamed Hatem
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Structural Multi-Language Translation Mapping Table Dictionary Architecture
+        const translations = {
+            en: {
+                "nav-about": "About", "nav-services": "Services", "nav-doctors": "Specialists", "nav-results": "Cases", "nav-faq": "FAQ", "nav-contact": "Contact", "nav-book": "BOOK APPOINTMENT",
+                "hero-tag": "Elite Dental Care Excellence",
+                "hero-desc": "Experience advanced medical infrastructure combined with elite clinical mastery. We craft pristine aesthetics and radiant health through localized specialized workflows.",
+                "hero-btn-book": "Book Appointment", "hero-btn-services": "Our Services",
+                "hero-glass-text": "Digital Oral Scan", "hero-glass-title": "100% Diagnostic Accuracy",
+                "stat-exp": "Years Experience", "stat-patients": "Happy Patients", "stat-docs": "Dental Specialists", "stat-emergency": "Emergency Support",
+                "about-tag": "ABOUT CLINIC", "about-title": "Elevating Standards of Absolute Oral Health System Delivery",
+                "about-p1": "SmileCare Clinic operates at the frontier of international micro-dentistry paradigms. Established with an uncompromising structural dedication to therapeutic refinement, our clinic unifies non-invasive precision parameters with an artistic vision of facial structure balance.",
+                "about-m-title": "Our Mission", "about-m-desc": "To implement frictionless high-fidelity diagnostic therapeutic procedures engineered exclusively to protect user longevity matrix frameworks.",
+                "about-v-title": "Our Values", "about-v-desc": "Absolute surgical transparency, continuous academic validation integration, and compassionate patient interface parameters.",
+                "services-tag": "CLINICAL DISCIPLINES", "services-title": "Elite Dental Specializations",
+                "srv1-name": "Teeth Whitening", "srv1-desc": "Laser-activated enamel whitening workflows resulting in up to eight multi-shade modifications without baseline structural degradation.",
+                "srv2-name": "Dental Implants", "srv2-desc": "High-fidelity bio-compatible structural titanium implant placement interfaces utilizing navigated computing matrix workflows.",
+                "srv3-name": "Orthodontics", "srv3-desc": "Advanced structural occlusion balancing mechanisms leveraging premium crystal translucent modern alignments.",
+                "srv4-name": "Root Canal Treatment", "srv4-desc": "Microscopic endodontic internal channel stereotactic cleansing and structural structural high-seal polymerization.",
+                "srv5-name": "Cosmetic Dentistry", "srv5-desc": "Custom localized smile design protocols involving hyper-thin premium laminate ceramic veneers.",
+                "srv6-name": "Emergency Care", "srv6-desc": "Immediate clinical parameters allocation for acute dentoalveolar trauma management protocols execution.",
+                "why-tag": "ADVANTAGES MATRIX", "why-title": "Why SmileCare Leads Nationally",
+                "why1-title": "Advanced Technology", "why1-desc": "3D intraoral digital scanners, precision dental operating microscopes, and localized AI radiograph screening engines.",
+                "why2-title": "Experienced Doctors", "why2-desc": "Board-certified clinical masters maintaining continuous ongoing tenure across premier global research bodies.",
+                "why3-title": "Comfortable Environment", "why3-desc": "Premium acoustic isolation chambers paired with stress-attenuation medical ergonomic support structures.",
+                "why4-title": "Affordable Care", "why4-desc": "Absolute transactional transparency featuring flexible fractional internal financing matrices configuration structures.",
+                "docs-tag": "MEDICAL REGISTRY", "docs-title": "Our Elite Medical Faculty", "doc-exp-label": "EXPERIENCE",
+                "doc1-spec": "Chief Implantologist", "doc2-spec": "Orthodontic Specialist", "doc3-spec": "Cosmetic Reconstructive Dentist", "doc4-spec": "Endodontic Surgeon",
+                "results-tag": "CLINICAL VERIFICATION", "results-title": "Transformational Case Showcase", "case-before": "BEFORE", "case-after": "AFTER",
+                "case1-title": "Full Arch Aesthetic Smile Reconstruction", "case1-desc": "Resolution of deep structural biometric spaces using custom customized micro E-Max ultra porcelain veneers infrastructure.",
+                "case2-title": "Guided Digital Implant Osteotomy", "case2-desc": "Extraction mitigation combined with instantaneous 3D titanium implant restoration processing pipelines parameters.",
+                "testi-tag": "PATIENT REFLECTIONS", "testi-title": "Testimonials of Excellence",
+                "testi1-text": "\"The surgical precision execution metrics deployed during my biological implant sequence operation was simply outstanding. No systemic structural post-op distress anomalies observed.\"", "testi1-job": "Corporate Director",
+                "testi2-text": "\"Absolute micro-aesthetic orchestration. My custom E-Max restorative porcelain laminate veneers parameters completely adapted to match physical jaw structural vectors perfectly.\"", "testi2-job": "Academic Professor",
+                "testi3-text": "\"The localized emergency operational response capability structure is elite. They processed treated my dynamic dental structural crack trauma with zero disruption delays.\"", "testi3-job": "Software Architect",
+                "reserve-tag": "RESERVATIONS SCHEDULER", "reserve-title": "Initiate Consultation Protocol",
+                "form-name": "Full Name", "form-phone": "Phone Number", "form-email": "Email Address", "form-date": "Preferred Date", "form-msg": "Clinical Symptoms Notes / Clinical Intent", "form-btn": "REQUEST CLINICAL ALLOCATION",
+                "faq-tag": "KNOWLEDGE BASE", "faq-title": "Frequently Asked Clinical Questions",
+                "faq1-q": "What parameters define dental implant longevity indices?", "faq1-a": "Dental implant longevity depends on successful osseointegration with underlying bone matrix grids, patient compliance with mechanical micro-hygiene maintenance protocols, and structural titanium micro-purity deployment criteria during surgical delivery.",
+                "faq2-q": "Does laser whitening weaken natural enamel structural matrices?", "faq2-a": "No. Our advanced therapeutic activation wavelengths oxidize deep extrinsic color matrices selectively within biological porosity intervals without causing modification or calcification breakdown within localized crystalline configurations.",
+                "faq3-q": "What protocol regulates post-trauma emergency response processing?", "faq3-a": "Acute traumatic injuries undergo instant diagnostic sorting validation upon transmission. Triage mechanics prioritize vascular control and nerve salvage operations, bypassing conventional waiting structures to preserve vital structures.",
+                "contact-tag": "CONNECT CHANNELS", "contact-title": "We Are Open To Serve", "c-add-t": "Physical Location Address", "c-ph-t": "Surgical Inquiries Hub", "c-em-t": "Electronic Secure Mailing Intake", "contact-address": "422 Medical Tower, Clinical Plaza District, Manhattan, NY 10021",
+                "map-placeholder-title": "Interactive Medical Positioning Space Enabled", "map-placeholder-desc": "Structural satellite mapping coordinates display system dynamically muted for baseline production compliance testing verification.",
+                "f-hours-t": "Operational Care Windows", "h-wd": "Monday - Friday", "h-we": "Saturday", "h-note": "24/7 Acute Dental Emergency Intake Streams Available",
+                "f-legal-t": "Clinical Verification", "f-legal-d": "All surgical operations execution streams strictly comply with the direct operational directives defined by the National Healthcare Standards Validation Board Matrix protocols.",
+                "footer-desc": "Operating advanced diagnostics clinical micro-surgical care loops optimized for premium aesthetic longevity parameters validation across contemporary global communities ecosystems.",
+                "dev-title": "Designed & Engineered by:"
+            },
+            ar: {
+                "nav-about": "من نحن", "nav-services": "خدماتنا", "nav-doctors": "أطباؤنا", "nav-results": "الحالات", "nav-faq": "الأسئلة الشائعة", "nav-contact": "اتصل بنا", "nav-book": "حجز موعد",
+                "hero-tag": "نخبة التميز في الرعاية الصحية للفم",
+                "hero-desc": "اختبر البنية التحتية الطبية المتقدمة والمدعومة بالإتقان الإكلينيكي المتميز. نحن نصنع جماليات الابتسامة والصحة الحقيقية من خلال آليات عمل تخصصية فائقة الدقة.",
+                "hero-btn-book": "احجز موعدك الآن", "hero-btn-services": "خدماتنا العيادية",
+                "hero-glass-text": "الفحص الرقمي الفموي ثلاثي الأبعاد", "hero-glass-title": "دقة تشخيصية بنسبة 100%",
+                "stat-exp": "سنوات الخبرة الإكلينيكية", "stat-patients": "حالة تم شفاؤها وسعادتها", "stat-docs": "أخصائي واستشاري أسنان", "stat-emergency": "طوارئ على مدار الساعة",
+                "about-tag": "عن العيادة", "about-title": "الارتقاء بالمعايير العالمية لتقديم منظومة صحة الفم المتكاملة",
+                "about-p1": "تعمل عيادة سميل كير على خط المواجهة المتقدم للنماذج الطبية العالمية لطب الأسنان الدقيق. تأسست العيادة مع التزام هيكلي صارم بالتطوير العلاجي، لتدمج معايير الدقة الجراحية غير الجراحية برؤية فنية لتوازن ملامح الوجه.",
+                "about-m-title": "رسالتنا العيادية", "about-m-desc": "تنفيذ إجراءات تشخيصية وعلاجية عالية الدقة وبسلاسة مطلقة، مصممة خصيصاً لحماية بنية الأسنان على المدى الطويل.",
+                "about-v-title": "قيمنا المؤسسية", "about-v-desc": "الشفافية الجراحية المطلقة، التكامل المستمر مع الأبحاث الأكاديمية المعتمدة، والإدارة الإنسانية الواعية لراحة المرضى.",
+                "services-tag": "التخصصات العيادية الدقيقة", "services-title": "تخصصات الأسنان النخبوية",
+                "srv1-name": "تبييض الأسنان بالليزر", "srv1-desc": "منظومة تبييض المينا وتنشيطها بالليزر، تضمن تغيير لون الأسنان حتى ثماني درجات بدون المساس بصلابة الهيكل العضوي للسن.",
+                "srv2-name": "زراعة الأسنان المتقدمة", "srv2-desc": "تركيب دعامات التيتانيوم الحيوية والمتوافقة تماماً مع عظام الفك، باستخدام أنظمة التوجيه الرقمي المحوسب بدون ألم.",
+                "srv3-name": "تقويم الأسنان الهيكلي", "srv3-desc": "آليات متطورة لتعديل الإطباق ومحاذاة الفكين باستخدام قوالب شفافة كريستالية غير مرئية وعصرية للغاية.",
+                "srv4-name": "علاج الجذور والأعصاب", "srv4-desc": "تنظيف وتطهير القنوات الداخلية للجذور تحت المجهر الإلكتروني ثلاثي الأبعاد مع إغلاق القنوات ببوليمرات عالية الإحكام.",
+                "srv5-name": "طب الأسنان التجميلي", "srv5-desc": "بروتوكولات تصميم الابتسامة المخصصة رقمياً باستخدام قشور السيراميك والعدسات الخزفية فائقة الرقة (إيماكس).",
+                "srv6-name": "طوارئ الأسنان الفورية", "srv6-desc": "التخصيص الفوري للفرق الطبية للتعامل مع حالات إصابات الأسنان الحادة والكسور المفاجئة وفقاً لأعلى بروتوكولات الإسعاف.",
+                "why-tag": "مصفوفة مزايانا التنافسية", "why-title": "لماذا تتربع سميل كير على الصدارة؟",
+                "why1-title": "التكنولوجيا الطبية الأحدث", "why1-desc": "الماسحات الضوئية الفموية ثلاثية الأبعاد، مجاهر العمليات الجراحية الدقيقة، ومحركات الذكاء الاصطناعي لتحليل الأشعة السينية.",
+                "why2-title": "أطباء وعلماء خبراء", "why2-desc": "أطباء استشاريون حاصلون على البورد الدولي ويحملون زمالات بحثية مستمرة في أكبر المؤسسات الأكاديمية العالمية.",
+                "why3-title": "بيئة علاجية مريحة وفخمة", "why3-desc": "غرف عزل صوتي فائقة مع مقاعد جراحية مريحة لتقليل التوتر ومستويات القلق تماماً أثناء الإجراءات.",
+                "why4-title": "شفافية وتسهيلات مالية", "why4-desc": "شفافية مالية مطلقة مع توفير خطط سداد وتسهيلات مرنة ومقسمة لتناسب متطلبات الموازنة الخاصة بك.",
+                "docs-tag": "السجل الطبي الرسمي", "docs-title": "نخبة أعضاء الهيئة الطبية", "doc-exp-label": "الخبرة الإكلينيكية",
+                "doc1-spec": "كبير استشاريي زراعة الأسنان", "doc2-spec": "أخصائي تقويم الأسنان والفكين", "doc3-spec": "استشاري تجميل وترميم الأسنان", "doc4-spec": "جراح ميكروسكوبي لعلاج الجذور",
+                "results-tag": "التحقق والتوثيق الإكلينيكي", "results-title": "معرض الحالات والتحولات الواقعية", "case-before": "قبل العلاج", "case-after": "بعد العلاج",
+                "case1-title": "إعادة بناء وتجميل كامل للابتسامة", "case1-desc": "إغلاق المسافات الهيكلية وتصحيح توازن الابتسامة الكامل باستخدام عدسات إيماكس الخزفية المجهرية فائقة الدقة.",
+                "case2-title": "جراحة زراعة الأسنان الموجهة رقمياً", "case2-desc": "تعويض السن المفقود جراحياً وبشكل فوري عبر تقنيات التوجيه ثلاثي الأبعاد المباشر دون التأثير على الأنسجة المحيطة.",
+                "results-tag": "آراء وتجارب مرضانا", "testi-title": "شهادات التميز الإكلينيكي",
+                "testi1-text": "\"مستوى الدقة الجراحية أثناء عملية زراعة الأسنان كان مذهلاً بحق. لم أشعر بأي آلام أو مضاعفات هيكلية تذكر بعد انتهاء مفعول التخدير.\"", "testi1-job": "مديرة تنفيذية",
+                "testi2-text": "\"تناسق تجميلي رائع ومتقن للغاية. قشور السيراميك المخصصة لي تطابقت مع زوايا الفك وحركة الأسنان الطبيعية بشكل مثالي وبدون أي شعور غريب.\"", "testi2-job": "بروفيسورة أكاديمية",
+                "testi3-text": "\"سرعة الاستجابة في قسم الطوارئ لديهم تفوق الخيال. تعاملوا مع حالة الكسر الحاد في ضرس طفلي بمهنية فائقة ودون أي تأخير في صالات الانتظار.\"", "testi3-job": "مهندس بنية برمجية",
+                "reserve-tag": "منظومة جدولة الحجوزات", "reserve-title": "ابدأ بروتوكول الاستشارة الطبية",
+                "form-name": "الاسم الثلاثي بالكامل", "form-phone": "رقم الهاتف المحمول", "form-email": "عنوان البريد الإلكتروني", "form-date": "التاريخ المفضّل للزيارة", "form-msg": "ملاحظات الأعراض المرضية / الغرض من الزيارة", "form-btn": "إرسال طلب تخصيص الموعد الطبي",
+                "faq-tag": "قاعدة المعرفة الطبية", "faq-title": "الأسئلة الإكلينيكية الشائعة والإجابات",
+                "faq1-q": "ما هي العوامل المحددة لمدى نجاح وعمر زراعة الأسنان؟", "faq1-a": "يعتمد نجاح واستمرار عملية الزراعة على الالتحام العظمي السليم لغرسة التيتانيوم، ومدى التزام المريض ببروتوكولات النظافة الفموية الدورية، بالإضافة إلى درجة نقاء المعدن المستخدم جراحياً.",
+                "faq2-q": "هل يؤثر تبييض الأسنان بالليزر سلباً على طبقة المينا الطبيعية؟", "faq2-a": "أبداً. تعمل أطوال الموجات العلاجية المتقدمة لدينا على أكسدة جزيئات التصبغ العميقة فقط داخل الفراغات المجهرية للمينا دون إحداث أي تغيير أو إضعاف للبنية البلورية الأساسية للسن.",
+                "faq3-q": "ما هو البروتوكول المنظم للتعامل مع حالات طوارئ إصابات الفم؟", "faq3-a": "يتم فرز الحالات الطارئة فورياً وبمجرد وصول الإشعار. تمنح الأولوية القصوى لإيقاف النزيف الوعائي وإنقاذ العصب المصاب، متجاوزين أنظمة الانتظار التقليدية لضمان الحفاظ على حيوية الأنسجة.",
+                "contact-tag": "قنوات الاتصال المباشرة", "contact-title": "نحن هنا لخدمتكم دائماً", "c-add-t": "الموقع الجغرافي للعيادة", "c-ph-t": "مركز الاستفسارات الجراحية", "c-em-t": "البريد الإلكتروني الآمن للملفات الطبية", "contact-address": "برج الأطباء 422، منطقة المجمعات الطبية، مانهاتن، نيويورك 10021",
+                "map-placeholder-title": "تم تفعيل نظام تحديد المواقع الطبي التفاعلي", "map-placeholder-desc": "عرض الخريطة الرقمية والمنظومة الفضائية متاح الآن لاختبار كفاءة التشغيل داخل بيئة العرض والإنتاج الافتراضية.",
+                "f-hours-t": "ساعات العمل الرسمية", "h-wd": "الإثنين - الجمعة", "h-we": "السبت", "h-note": "استقبال حالات طوارئ الأسنان الحادة متاح 24 ساعة دون انقطاع",
+                "f-legal-t": "الاعتمادات القانونية والطبية", "f-legal-d": "جميع الإجراءات الجراحية والعلاجية تخضع بشكل صارم ومباشر للمعايير المعتمدة من قبل الهيئة الوطنية للتحقق من جودة الرعاية الطبية وصحة الأسنان.",
+                "footer-desc": "إدارة تشغيل متكاملة للفحوصات الطبية المتقدمة وجراحات الأسنان الدقيقة الموجهة لرفع كفاءة الجمال الفموي واستدامته في المجتمعات العصرية.",
+                "dev-title": "تصميم وهندسة برمجية بواسطة:"
+            }
+        };
+
+        let currentLang = localStorage.getItem('clinicLang') || 'en';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('clinicLang', lang);
+            
+            const htmlTag = document.getElementById('html-tag');
+            htmlTag.setAttribute('lang', lang);
+            
+            if (lang === 'ar') {
+                htmlTag.setAttribute('dir', 'rtl');
+                document.getElementById('lang-toggle').innerText = 'EN';
+                document.getElementById('lang-toggle-mobile').innerText = 'EN';
+                document.getElementById('hero-headline').innerHTML = `ابتسامتك تستحق <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-tealAccent-500">أفضل رعاية طبية</span>`;
+                document.getElementById('copyright-text').innerText = '© 2026 عيادة سميل كير. جميع الحقوق محفوظة عالمياً.';
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                document.getElementById('lang-toggle').innerText = 'AR';
+                document.getElementById('lang-toggle-mobile').innerText = 'AR';
+                document.getElementById('hero-headline').innerHTML = `Your Smile Deserves <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-tealAccent-500">The Best Care</span>`;
+                document.getElementById('copyright-text').innerText = '© 2026 SMILECARE CLINIC. ALL RIGHTS RESERVED WORLDWIDE.';
+            }
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                }
+            });
+        }
+
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+            updateLanguage(currentLang === 'en' ? 'ar' : 'en');
+        });
+        document.getElementById('lang-toggle-mobile').addEventListener('click', () => {
+            updateLanguage(currentLang === 'en' ? 'ar' : 'en');
+        });
+
+        // Theme Storage and UI Configuration Setup Mechanics Engine
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+
+        if (localStorage.getItem('clinicTheme') === 'dark' || (!('clinicTheme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.setAttribute('data-lucide', 'sun');
+            themeIconMobile.setAttribute('data-lucide', 'sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.setAttribute('data-lucide', 'moon');
+            themeIconMobile.setAttribute('data-lucide', 'moon');
+        }
+        lucide.createIcons();
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('clinicTheme', 'light');
+                themeIcon.setAttribute('data-lucide', 'moon');
+                themeIconMobile.setAttribute('data-lucide', 'moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('clinicTheme', 'dark');
+                themeIcon.setAttribute('data-lucide', 'sun');
+                themeIconMobile.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+        // Mobile Layout Menu View Interactivity Controller Functions
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Header Spatial Structural Scroll Adaptation Listeners
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('shadow-md', 'bg-white/95', 'dark:bg-darkBg-900/95');
+                navbar.classList.remove('bg-white/80', 'dark:bg-darkBg-900/80');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('bg-white/80', 'dark:bg-darkBg-900/80');
+            }
+        });
+
+        // Top Progress Spatial Progression Calculation Routing Logic
+        const creditBadge = document.getElementById('credit-badge');
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgress').style.width = scrolled + '%';
+
+            if (winScroll > 120) {
+                creditBadge.classList.add('show');
+            } else {
+                creditBadge.classList.remove('show');
+            }
+
+            // Persist the coordinate offset locally
+            localStorage.setItem('clinicScrollY', winScroll);
+        });
+
+        // Spatial Restoration and App Life Cycle Initiation Handlers
+        window.addEventListener('load', () => {
+            updateLanguage(currentLang);
+            
+            triggerCounterAnimations();
+
+            // Re-establish saved coordinate offsets gracefully
+            const preservedY = localStorage.getItem('clinicScrollY');
+            if (preservedY) {
+                window.scrollTo({
+                    top: parseInt(preservedY, 10),
+                    behavior: 'instant'
+                });
+            }
+        });
+
+        // Dynamic Accordion Toggle Controller Engine Blueprint
+        document.querySelectorAll('.faq-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const icon = btn.querySelector('[data-lucide="chevron-down"]');
+                const panel = btn.nextElementSibling;
+                
+                if (panel.style.maxHeight && panel.style.maxHeight !== '0px') {
+                    panel.style.maxHeight = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Close other visible sibling panel elements
+                    document.querySelectorAll('.faq-btn').forEach(otherBtn => {
+                        if(otherBtn !== btn) {
+                            otherBtn.nextElementSibling.style.maxHeight = '0px';
+                            otherBtn.querySelector('[data-lucide="chevron-down"]').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Numerical Stat Array Transition Progression Computation Engine
+        function triggerCounterAnimations() {
+            document.querySelectorAll('.counter').forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1500; 
+                const startTime = performance.now();
+                
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Ease-out cubic calculation function algorithm
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const currentValue = Math.floor(easeProgress * target);
+                    
+                    counter.innerText = currentValue.toLocaleString();
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                }
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
+        // Modern Scroll-Driven Intersection Observers Framework
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
